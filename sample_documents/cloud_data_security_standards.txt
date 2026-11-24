@@ -1,0 +1,21 @@
+# Cloud Data Security, Encryption at Rest, and Zero-Trust Architectures
+Document Version: 3.2
+Standard Code: SEC-ZERO-TRUST-2026
+
+## Chapter 1: Introduction to Zero-Trust Architecture
+Zero Trust is a security paradigm founded on the core tenet: "Never Trust, Always Verify." In traditional perimeter-based security architectures, once an entity penetrates the outer firewall, lateral movement within the network is largely unrestricted. In contrast, Zero Trust assumes breach and requires strict cryptographic identity verification and least-privilege access for every API request, data query, and compute container.
+
+Key Tenet 1: Explicit Verification: Always authenticate and authorize based on all available data points, including user identity, location, device health, service or workload, data classification, and anomalies.
+Key Tenet 2: Least-Privilege Access: Limit user access with Just-In-Time (JIT) and Just-Enough-Access (JEA) protocols, risk-based adaptive policies, and data protection.
+Key Tenet 3: Assume Breach: Minimize blast radius by segmenting access by network, user, devices, and application awareness. Encrypt all sessions end-to-end.
+
+## Chapter 2: Cryptographic Standards for Enterprise Data
+All stored corporate documents and vector embeddings must be protected with symmetric cipher suites approved by NIST:
+1. AES-256-GCM (Galois/Counter Mode) or Fernet Authenticated Cryptography: Delivers authenticated encryption with associated data (AEAD), ensuring both confidentiality and tamper-evident message integrity.
+2. Key Derivation: Master passphrases must be hashed using PBKDF2-HMAC-SHA256 with a minimum iteration count of 100,000 to defend against GPU-accelerated rainbow table and dictionary attacks.
+3. Key Rotation: Cryptographic keys must be rotated every 90 days or immediately upon session termination in volatile ephemeral computing environments.
+
+## Chapter 3: Data Deletion and Cryptographic Shredding
+When user accounts are terminated or when zero-retention mode is activated:
+- Simple file unlinking (e.g., standard OS rm command) is strictly prohibited as raw magnetic/solid-state sectors can be recovered.
+- Secure Cryptographic Shredding must be executed: the underlying bytes must be overwritten with multi-pass cryptographically secure pseudorandom numbers (CSPRNG) before file handle closure and pointer destruction.

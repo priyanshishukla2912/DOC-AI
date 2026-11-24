@@ -10,6 +10,10 @@ import os
 import io
 import time
 import streamlit as st
+from dotenv import load_dotenv
+
+# Load local environment variables from .env file
+load_dotenv()
 
 from modules.encryption import DocumentVault, PIIScrubber
 from modules.document_parser import DocumentParser, DocumentMetadata

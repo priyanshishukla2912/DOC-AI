@@ -108,15 +108,30 @@ with st.sidebar:
     )
 
     # Quick demo document loader
-    st.markdown("💡 *Or test immediately with built-in sample:*")
-    sample_col1, sample_col2 = st.columns(2)
+    st.markdown("💡 *Or test immediately with built-in samples:*")
     sample_to_load = None
+    if st.button("📑 Load Sample PDF (4 Pages)", use_container_width=True, type="primary"):
+        sample_to_load = "sample_documents/DocuChat_Sample_Test_Document.pdf"
+
+    sample_col1, sample_col2 = st.columns(2)
     with sample_col1:
         if st.button("📄 AI Ethics", use_container_width=True):
             sample_to_load = "sample_documents/ai_ethics_and_governance.txt"
     with sample_col2:
         if st.button("🛡️ Cloud Security", use_container_width=True):
             sample_to_load = "sample_documents/cloud_data_security_standards.txt"
+
+    # Direct download button for the test PDF
+    test_pdf_path = "sample_documents/DocuChat_Sample_Test_Document.pdf"
+    if os.path.exists(test_pdf_path):
+        with open(test_pdf_path, "rb") as pdf_file:
+            st.download_button(
+                label="⬇️ Download Test PDF to Computer",
+                data=pdf_file.read(),
+                file_name="DocuChat_Sample_Test_Document.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
 
     st.markdown("---")
     st.markdown("### 🛡️ Privacy & RAG Hyperparameters")

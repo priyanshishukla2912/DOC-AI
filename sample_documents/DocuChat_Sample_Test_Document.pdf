@@ -1,0 +1,297 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+4 0 obj
+<< /Length 1478 >>
+stream
+BT
+/F1 11 Tf
+16 TL
+50 740 Td
+1.5 Tc
+(DOCUCHAT PLATFORM VERIFICATION AND BENCHMARK SPECIFICATION) Tj
+T*
+0 Tc
+(Document ID: DOC-SPEC-2026-V1 | Classification: Confidential Research) Tj
+T*
+0 Tc
+(Author: Priyanshi Shukla | System: DocuChat AI-Powered Document Q&A) Tj
+T*
+0 Tc
+() Tj
+T*
+1.5 Tc
+(CHAPTER 1: EXECUTIVE SYSTEM SUMMARY) Tj
+T*
+0 Tc
+(DocuChat is an enterprise-grade conversational AI platform designed to transform static corporate) Tj
+T*
+0 Tc
+(documents into interactive, searchable knowledge bases. Unlike standard generative chatbots,) Tj
+T*
+0 Tc
+(DocuChat guarantees strict factual grounding by enforcing a deterministic Retrieval-Augmented) Tj
+T*
+0 Tc
+(Generation \(RAG\) pipeline.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(Key Architectural Pillars:) Tj
+T*
+0 Tc
+(1. End-to-End Cryptographic Privacy: All user uploads are encrypted at rest with AES-256-CBC.) Tj
+T*
+0 Tc
+(2. Volatile Memory Decryption: Document buffers are decrypted only within volatile RAM during vector) Tj
+T*
+0 Tc
+(   indexing and are never exposed as plaintext on physical storage media.) Tj
+T*
+0 Tc
+(3. Pinpoint Source Attribution: Every model claim links directly to its source document and page number.) Tj
+T*
+0 Tc
+(4. Anti-Hallucination Guardrails: Prevents speculative responses when documents lack relevant context.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(Expected Benchmark Result for Page 1:) Tj
+T*
+0 Tc
+(When queried about 'What are the key architectural pillars?', the system should return all four points.) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 1507 >>
+stream
+BT
+/F1 11 Tf
+16 TL
+50 740 Td
+1.5 Tc
+(CHAPTER 2: CRYPTOGRAPHIC VAULT AND DATA PRIVACY STANDARDS) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(2.1 SYMMETRIC ENCRYPTION AT REST \(AES-256\)) Tj
+T*
+0 Tc
+(DocuChat implements the Fernet authenticated symmetric cipher suite, which combines AES-128-CBC) Tj
+T*
+0 Tc
+(with HMAC-SHA256 for authenticated message integrity. The system derives high-entropy 256-bit keys) Tj
+T*
+0 Tc
+(using PBKDF2-HMAC-SHA256 with 200,000 hashing iterations and unique cryptographic salts.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(2.2 ZERO-RETENTION MEMORY SCRUBBING) Tj
+T*
+0 Tc
+(When the user initiates a Zero-Retention Purge:) Tj
+T*
+0 Tc
+(- All encrypted .enc files stored in the .vault directory undergo multi-pass pseudorandom overwrites.) Tj
+T*
+0 Tc
+(- In-memory cryptographic keys and vector embeddings are flushed from volatile memory.) Tj
+T*
+0 Tc
+(- The key fingerprint is regenerated, invalidating prior session context permanently.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(2.3 PII ANONYMIZATION AND REDACTION) Tj
+T*
+0 Tc
+(To safeguard user privacy, DocuChat features an automated Personally Identifiable Information \(PII\) scrubber.) Tj
+T*
+0 Tc
+(Sensitive identifiers including email addresses, telephone numbers, and Social Security Numbers are) Tj
+T*
+0 Tc
+(masked before text context is submitted to the Large Language Model.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(Expected Benchmark Result for Page 2:) Tj
+T*
+0 Tc
+(When asked 'How does zero-retention purge work?', the system should cite the multi-pass overwrite on Page 2.) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 1287 >>
+stream
+BT
+/F1 11 Tf
+16 TL
+50 740 Td
+1.5 Tc
+(CHAPTER 3: RETRIEVAL-AUGMENTED GENERATION \(RAG\) PIPELINE) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(3.1 RECURSIVE SEMANTIC TEXT CHUNKING) Tj
+T*
+0 Tc
+(Documents are segmented using a recursive character splitting algorithm with a default chunk size of) Tj
+T*
+0 Tc
+(700 characters and a 120-character sliding overlap. This ensures semantic continuity across sentence boundaries.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(3.2 DUAL-MODE HYBRID VECTOR INDEX) Tj
+T*
+0 Tc
+(The vector engine operates in two interchangeable modes:) Tj
+T*
+0 Tc
+(- Neural Mode: Powered by Google Gemini text-embedding-004 generating 768-dimensional dense vectors.) Tj
+T*
+0 Tc
+(- In-Memory Sparse Mode: An optimized TF-IDF and BM25 cosine similarity index that functions fully offline) Tj
+T*
+0 Tc
+(  with zero external API dependency.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(3.3 TOP-K RETRIEVAL AND RELEVANCE SCORING) Tj
+T*
+0 Tc
+(User queries are mapped into the vector space. The retriever ranks candidates using normalized cosine) Tj
+T*
+0 Tc
+(similarity and returns the top 4 most relevant chunks with confidence percentages.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(Expected Benchmark Result for Page 3:) Tj
+T*
+0 Tc
+(When asked 'What chunk size and overlap does the RAG pipeline use?', the system should cite 700 and 120.) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 980 >>
+stream
+BT
+/F1 11 Tf
+16 TL
+50 740 Td
+1.5 Tc
+(CHAPTER 4: PERFORMANCE BENCHMARKS AND VERIFICATION METRICS) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(4.1 LATENCY AND THROUGHPUT TARGETS) Tj
+T*
+0 Tc
+(- Average Ingestion & Encryption Latency: 120 milliseconds per document page.) Tj
+T*
+0 Tc
+(- Average Vector Retrieval Latency: 45 milliseconds across 5,000 indexed chunks.) Tj
+T*
+0 Tc
+(- Streaming Response First-Token Latency: 350 milliseconds using Gemini 1.5 Flash.) Tj
+T*
+0 Tc
+(- Factual Grounding Precision Score: 99.4% on standard legal and technical question benchmarks.) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(4.2 PROJECT CREDITS AND ATTRIBUTION) Tj
+T*
+0 Tc
+(Project Name: DocuChat -- AI-Powered Document Q&A System) Tj
+T*
+0 Tc
+(Lead Architect and Engineer: Priyanshi Shukla) Tj
+T*
+0 Tc
+(Repository: https://github.com/priyanshishukla2912/DOC-AI) Tj
+T*
+0 Tc
+(Official Signature: MADE WITH HEART EMOJI PRIYANSHI SHUKLA) Tj
+T*
+0 Tc
+() Tj
+T*
+0 Tc
+(End of Specification Document - Ready for Ingestion Testing.) Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000000155 00000 n 
+0000000204 00000 n 
+0000001734 00000 n 
+0000001860 00000 n 
+0000003419 00000 n 
+0000003545 00000 n 
+0000004884 00000 n 
+0000005010 00000 n 
+0000006042 00000 n 
+trailer
+<< /Size 12 /Root 3 0 R >>
+startxref
+6170
+%%EOF

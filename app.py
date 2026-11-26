@@ -72,13 +72,29 @@ if "pending_prompt" not in st.session_state:
 with st.sidebar:
     st.markdown("### ⚙️ Engine & API Configuration")
     env_gemini_key = os.getenv("GEMINI_API_KEY", "") or os.getenv("GOOGLE_API_KEY", "")
-    api_key_input = st.text_input(
-        "Google Gemini API Key",
-        value=env_gemini_key,
-        type="password",
-        placeholder="AIzaSy...",
-        help="Enter your Gemini API key from Google AI Studio. Leave empty to use local offline synthesis."
-    )
+    
+    if env_gemini_key:
+        # Secure Production Mode: Key is stored in backend secrets, NOT exposed in UI
+        api_key_input = env_gemini_key
+        st.markdown("""
+        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+            <div style="color: #34d399; font-weight: 600; font-size: 0.9rem;">
+                🔒 Secured via Backend Secret
+            </div>
+            <div style="color: #94a3b8; font-size: 0.78rem; margin-top: 3px;">
+                API key is locked in private server environment. Zero credentials are exposed in the interface.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        # Fallback Mode: Only displayed when no environment secret exists
+        api_key_input = st.text_input(
+            "Google Gemini API Key (Optional)",
+            value="",
+            type="password",
+            placeholder="AIzaSy...",
+            help="Your API key is only stored in browser session memory and never shared."
+        )
 
     col_model, col_temp = st.columns([1.2, 0.8])
     with col_model:
